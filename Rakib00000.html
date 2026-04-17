@@ -1,330 +1,297 @@
 <!DOCTYPE html>
 <html lang="bn">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rakib HaSsan Ovi (@Rakibhasanovi021)</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
-    <style>
-        :root {
-            --green: #00ff9d;
-            --dark: #0a0a0a;
-        }
-        * { margin:0; padding:0; box-sizing:border-box; }
-        body {
-            font-family: 'Courier New', monospace;
-            background: var(--dark);
-            color: var(--green);
-            overflow-x: hidden;
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-        }
-        .matrix-bg {
-            position: fixed;
-            top: 0; left: 0; right: 0; bottom: 0;
-            z-index: -1;
-            opacity: 0.7;
-        }
-        .terminal {
-            flex: 1;
-            max-width: 1200px;
-            margin: 20px auto;
-            padding: 25px;
-            border: 2px solid var(--green);
-            box-shadow: 0 0 45px var(--green);
-            background: rgba(10,20,10,0.96);
-            overflow-y: auto;
-            display: flex;
-            flex-direction: column;
-        }
-        .header {
-            text-align: center;
-            padding: 12px;
-            border-bottom: 1px solid var(--green);
-            margin-bottom: 25px;
-            font-size: 1.35rem;
-            color: #00cc7a;
-        }
-        .output {
-            flex: 1;
-            white-space: pre-wrap;
-            font-size: 1.08rem;
-            line-height: 1.75;
-        }
-        .input-line {
-            display: flex;
-            align-items: center;
-            margin-top: 12px;
-        }
-        .prompt {
-            color: #00cc7a;
-            margin-right: 10px;
-            user-select: none;
-        }
-        input {
-            background: transparent;
-            border: none;
-            color: var(--green);
-            font-family: inherit;
-            font-size: 1.08rem;
-            flex: 1;
-            outline: none;
-        }
-        .cursor {
-            display: inline-block;
-            width: 10px;
-            height: 1.2em;
-            background: var(--green);
-            animation: blink 0.75s step-end infinite;
-        }
-        @keyframes blink {
-            50% { opacity: 0; }
-        }
-        .command { color: #fff; }
-        .error { color: #ff6666; }
-        .bio { color: #aaffcc; line-height: 1.85; }
-        .contact-info a { color: #00f0ff; text-decoration: none; }
-        .contact-info a:hover { color: #00ff9d; text-decoration: underline; }
-        .profile-img {
-            max-width: 280px;
-            border: 3px solid var(--green);
-            border-radius: 8px;
-            margin: 15px 0;
-            box-shadow: 0 0 25px var(--green);
-        }
-        button {
-            background: transparent;
-            border: 1px solid var(--green);
-            color: var(--green);
-            padding: 6px 16px;
-            margin: 6px 4px;
-            cursor: pointer;
-            font-family: inherit;
-        }
-        button:hover {
-            background: var(--green);
-            color: #000;
-        }
-        footer {
-            text-align: center;
-            padding: 18px;
-            font-size: 0.92rem;
-            opacity: 0.65;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rakib HaSsan Ovi (@Rakibhasanovi021)</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+  <style>
+    :root {
+      --green: #00ff9d;
+      --dark: #0a0a0a;
+    }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body {
+      font-family: 'Courier New', monospace;
+      background: var(--dark);
+      color: var(--green);
+      overflow-x: hidden;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    .matrix-bg {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      z-index: -1;
+      opacity: 0.7;
+    }
+    .terminal {
+      flex: 1;
+      max-width: 1200px;
+      margin: 20px auto;
+      padding: 25px;
+      border: 2px solid var(--green);
+      box-shadow: 0 0 45px var(--green);
+      background: rgba(10,20,10,0.96);
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+    }
+    .header {
+      text-align: center;
+      padding: 12px;
+      border-bottom: 1px solid var(--green);
+      margin-bottom: 25px;
+      font-size: 1.35rem;
+      color: #00cc7a;
+    }
+    .output {
+      flex: 1;
+      white-space: pre-wrap;
+      font-size: 1.08rem;
+      line-height: 1.75;
+    }
+    .input-line {
+      display: flex;
+      align-items: center;
+      margin-top: 12px;
+    }
+    .prompt {
+      color: #00cc7a;
+      margin-right: 10px;
+      user-select: none;
+    }
+    input {
+      background: transparent;
+      border: none;
+      color: var(--green);
+      font-family: inherit;
+      font-size: 1.08rem;
+      flex: 1;
+      outline: none;
+    }
+    .cursor {
+      display: inline-block;
+      width: 10px;
+      height: 1.2em;
+      background: var(--green);
+      animation: blink 0.75s step-end infinite;
+    }
+    @keyframes blink {
+      50% { opacity: 0; }
+    }
+    .command { color: #fff; }
+    .error { color: #ff6666; }
+    .bio { color: #aaffcc; line-height: 1.85; }
+    .contact-info a { color: #00f0ff; text-decoration: none; }
+    .contact-info a:hover { color: #00ff9d; text-decoration: underline; }
+    .profile-img {
+      max-width: 280px;
+      width: 100%;
+      height: auto;
+      border: 3px solid var(--green);
+      border-radius: 8px;
+      margin: 15px auto;
+      display: block;
+      box-shadow: 0 0 25px var(--green);
+    }
+  </style>
 </head>
 <body>
 
-    <div class="matrix-bg" id="matrix"></div>
+  <div class="matrix-bg" id="matrix"></div>
 
-    <div class="terminal">
-        <div class="header">
-            Rakib HaSsan Ovi@cybercodes:~$ <span style="color:#888;">— @Rakibhasanovi021</span>
-        </div>
-
-        <div class="output" id="output">
+  <div class="terminal">
+    <div class="header">
+      Rakib HaSsan Ovi@cybercodes:~$ <span style="color:#888;">— @Rakibhasanovi021</span>
+    </div>
+    
+    <div class="output" id="output">
 <span class="command">$ welcome</span><br>
 Access granted to Rakib HaSsan Ovi's secure terminal.<br>
 Type <span style="color:#fff;">help</span> for available commands.<br><br>
-        </div>
-
-        <div class="input-line">
-            <span class="prompt">$</span>
-            <input type="text" id="commandInput" autocomplete="off" autofocus>
-            <span class="cursor"></span>
-        </div>
     </div>
 
-    <footer>
-        © 2026 Rakib HaSsan Ovi (@Rakibhasanovi021) • Certified Ethical Hacker (C|EH) • CyberCodes
-    </footer>
+    <div class="input-line">
+      <span class="prompt">$</span>
+      <input type="text" id="commandInput" autocomplete="off" autofocus>
+      <span class="cursor"></span>
+    </div>
+  </div>
 
-    <script>
-        const output = document.getElementById('output');
-        const input = document.getElementById('commandInput');
+  <footer>
+    © 2026 Rakib HaSsan Ovi (@Rakibhasanovi021) • Certified Ethical Hacker (C|EH) • CyberCodes
+  </footer>
 
-        // Matrix Rain
-        function createMatrix() {
-            const canvas = document.createElement('canvas');
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-            document.getElementById('matrix').appendChild(canvas);
+  <script>
+    const output = document.getElementById('output');
+    const input = document.getElementById('commandInput');
 
-            const ctx = canvas.getContext('2d');
-            const chars = '01アイウエオカキクケコハヒフヘホラリルレロ'.split('');
-            const fontSize = 14;
-            const columns = canvas.width / fontSize;
-            const drops = Array(Math.floor(columns)).fill(1);
+    // Matrix Rain
+    function createMatrix() {
+      const canvas = document.createElement('canvas');
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+      document.getElementById('matrix').appendChild(canvas);
+      
+      const ctx = canvas.getContext('2d');
+      const chars = '01アイウエオカキクケコハヒフヘホラリルレロ'.split('');
+      const fontSize = 14;
+      let columns = Math.floor(canvas.width / fontSize);
+      let drops = Array(columns).fill(1);
 
-            function draw() {
-                ctx.fillStyle = 'rgba(10,20,10,0.09)';
-                ctx.fillRect(0, 0, canvas.width, canvas.height);
-                ctx.fillStyle = '#00ff9d';
-                ctx.font = `${fontSize}px monospace`;
+      function resizeCanvas() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        columns = Math.floor(canvas.width / fontSize);
+        drops = Array(columns).fill(1);
+      }
+      window.addEventListener('resize', resizeCanvas);
 
-                for (let i = 0; i < drops.length; i++) {
-                    const text = chars[Math.floor(Math.random() * chars.length)];
-                    ctx.fillText(text, i * fontSize, drops[i] * fontSize);
-                    if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) drops[i] = 0;
-                    drops[i]++;
-                }
-            }
-            setInterval(draw, 40);
+      function draw() {
+        ctx.fillStyle = 'rgba(10,20,10,0.09)';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        ctx.fillStyle = '#00ff9d';
+        ctx.font = ${fontSize}px monospace;
+
+        for (let i = 0; i < drops.length; i++) {
+          const text = chars[Math.floor(Math.random() * chars.length)];
+          ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+          if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) drops[i] = 0;
+          drops[i]++;
         }
+      }
+      setInterval(draw, 40);
+    }
 
-        function resetTerminal() {
-            output.innerHTML = `<span class="command">$ welcome</span><br>
+    function resetTerminal() {
+      output.innerHTML = `<span class="command">$ welcome</span><br>
 Access granted to Rakib HaSsan Ovi's secure terminal.<br>
 Type <span style="color:#fff;">help</span> for available commands.<br><br>`;
-            output.scrollTop = output.scrollHeight;
-        }
+      output.scrollTop = output.scrollHeight;
+    }
 
-        function addLine(text, className = '') {
-            const line = document.createElement('div');
-            if (className) line.className = className;
-            line.innerHTML = text;
-            output.appendChild(line);
-            output.scrollTop = output.scrollHeight;
-        }
+    function addLine(text, className = '') {
+      const line = document.createElement('div');
+      if (className) line.className = className;
+      line.innerHTML = text;
+      output.appendChild(line);
+      output.scrollTop = output.scrollHeight;
+    }
 
-        function processCommand(cmd) {
-            cmd = cmd.trim().toLowerCase();
-            addLine(`<span class="command">$ ${cmd}</span>`);
+    function processCommand(cmd) {
+      cmd = cmd.trim().toLowerCase();
+      addLine(`<span class="command">$ ${cmd}</span>`);
 
-            switch(cmd) {
-                case 'help':
-                    addLine(`Available commands:<br>
-    whoami    → Basic info<br>
-    about     → Detailed Bio with Photo<br>
-    skills    → My full expertise<br>
-    projects  → View projects<br>
-    contact   → Show contact details<br>
-    price     → Pricing & Fun Facts<br>
-    clean     → Reset terminal to start<br>
-    clear     → Clear screen<br>
-    matrix    → Toggle matrix rain<br>
-    help      → Show this menu`);
-                    break;
+      switch(cmd) {
+        case 'help':
+          addLine(`Available commands:<br>
+  whoami    → Basic info<br>
+  about     → Detailed Bio with Photo<br>
+  skills    → My full expertise<br>
+  projects  → View projects<br>
+  contact   → Show contact details<br>
+  price     → Pricing & Fun Facts<br>
+  clean     → Reset terminal<br>
+  clear     → Clear screen<br>
+  matrix    → Toggle matrix rain<br>
+  help      → Show this menu`);
+          break;
 
-                case 'whoami':
-                    addLine(`Username: @Rakibhasanovi021<br>
+        case 'whoami':
+          addLine(`Username: @Rakibhasanovi021<br>
 Real Name: Rakib HaSsan Ovi<br>
 Role: Certified Ethical Hacker (C|EH)<br>
 Location: Khulna / Dhaka, Bangladesh`);
-                    break;
+          break;
 
-                case 'about':
-                    addLine(`
-<img src="https://via.placeholder.com/600x650/111111/00ff9d?text=Rakib+HaSsan+Ovi" class="profile-img" alt="Rakib HaSsan Ovi"><br><br>
+        case 'about':
+          addLine(`
+<img src="https://your-custom-image-url-here.com/yourphoto.jpg" 
+     class="profile-img" 
+     alt="Rakib HaSsan Ovi"><br><br>
 
-<strong>Rakib Hasan</strong><br><br>
+<strong>Rakib Hasan Ovi</strong><br><br>
 
-I am a Full-Stack Web Developer & Web Designer based in Bangladesh, but working Worldwide. I am passionate about designing and developing user-friendly websites. I have all the skills to create a new high quality website or improve existing websites for individuals and organisations, using the latest techniques and trends.<br><br>
+I am a Full-Stack Web Developer & Certified Ethical Hacker based in Bangladesh.<br>
+Passionate about cybersecurity, web development, SEO, and building secure digital solutions.<br><br>
 
-Professional Cybersecurity Specialist with a deep-rooted passion for ethical hacking and digital defense. As a member of Cyber 71 and a Certified Ethical Hacker (C|EH), I focus on identifying vulnerabilities and securing web infrastructures. Currently working with CyberCodes Web & App Solutions, I combine my technical skills in SEO and Web Development to provide 360-degree digital security.<br>
-🎓 Alumnus of Daffodil International University.<br>
-🛡️ Dedicated to building a safer internet, one server at a time.<br><br>
+🎓 Alumnus of Daffodil International University<br>
+🛡️ Member of Cyber 71<br>
+💼 Working at CyberCodes Web & App Solutions<br><br>
 
-Rakib Hasan Ovi | 🛡️ Digital Guardian⚡ Certified Ethical Hacker (C|EH)⚔️ Proudly defending the web with Cyber 71🌐 SEO Specialist & Web Architect at CyberCodes🎓 DIU Graduate | 📍 Jashore<br><br>
 “Cybersecurity is not just a profession, it’s a mission.”<br>
-📩 Let’s talk security (DM for collaborations)<br><br>
+📩 DM for collaborations & freelance projects
+          `, 'bio');
+          break;
 
-Rakib Hasan OviEthical Hacker | Cybersecurity Expert | SEO Consultant🛡️ Safeguarding data with Cyber 71💻 Crafting secure digital solutions at CyberCodes🎓 Daffodil International University🚀 Turning vulnerabilities into strengths.📍 Bangladesh 🇧🇩
-                    `, 'bio');
-                    break;
+        case 'skills':
+          addLine(`<strong>Cybersecurity</strong><br>Ethical Hacking, SOC Analysis, Threat Intelligence, Penetration Testing<br><br>
+<strong>Web Development</strong><br>Full-Stack (HTML, CSS, JS, React, Node.js etc.)<br><br>
+<strong>SEO & Digital Marketing</strong><br>Search Strategy & Ranking Improvement<br><br>
+<strong>QA & Optimization</strong><br>Debugging & Performance Tuning`);
+          break;
 
-                case 'skills':
-                    addLine(`<span class="skill-section">
-<strong>Ecommerce</strong><br>
-Managed product listings, order processing, and customer support across platforms like Amazon and Shopify...
-
-<strong>Web Design</strong><br>
-Designed responsive, user-friendly websites using HTML, CSS, and design tools like Figma and Adobe XD...
-
-<strong>Cybersecurity Specialist | SOC Analyst | Threat Intelligence</strong><br>
-Passionate about defending digital frontiers...
-
-<strong>SEO Specialist | Search Strategy & Digital Growth</strong><br>
-I help brands climb the search results...
-
-<strong>QA Engineer | Debugging & Website Optimization Specialist</strong><br>
-I find the bugs before your users do...
-                    </span>`);
-                    break;
-
-                case 'projects':
-                    addLine(`1. Secure E-Commerce Platform (Penetration Tested)<br>
+        case 'projects':
+          addLine(`1. Secure E-Commerce Platform (Penetration Tested)<br>
 2. Local Business Cybersecurity Audit<br>
-3. SEO Optimization Campaign (Google Ranking Improvement)<br><br>
+3. SEO Optimization Campaign<br><br>
 Type <span style="color:#fff;">projects 1</span> for details.`);
-                    break;
+          break;
 
-                case 'contact':
-                    addLine(`<span class="contact-info">
-📧 Email     : <a href="mailto:your.email@example.com">your.email@example.com</a><br>
+        case 'contact':
+          addLine(`📧 Email     : <a href="mailto:your.email@example.com">your.email@example.com</a><br>
 📸 Instagram : <a href="https://www.instagram.com/rakibhasanovi021" target="_blank">@rakibhasanovi021</a><br>
 📱 WhatsApp  : <a href="https://wa.me/880xxxxxxxxxx" target="_blank">+880xxxxxxxxxx</a><br>
-🔗 LinkedIn  : <a href="https://bd.linkedin.com/in/rakibhasanovi021" target="_blank">rakibhasanovi021</a><br><br>
-Ready for collaboration or freelance projects.
-                    </span>`);
-                    break;
+🔗 LinkedIn  : <a href="https://bd.linkedin.com/in/rakibhasanovi021" target="_blank">rakibhasanovi021</a>`);
+          break;
 
-                case 'price':
-                    addLine(`<span class="pricing">
-<strong>Pricing</strong><br><br>
-Silver Plan<br>
-$38 <span style="color:#888;">Per Hour</span><br><br>
-Gold Plan<br>
-$88 <span style="color:#888;">Per Hour</span><br><br>
-
+        case 'price':
+          addLine(`<strong>Pricing</strong><br><br>
+Silver Plan → $38 / Hour<br>
+Gold Plan   → $88 / Hour<br><br>
 <strong>Fun Facts</strong><br>
-Happy Clients      : 578<br>
-Working Hours      : 4,780<br>
-Awards Won         : 15
-                    </span>`);
-                    break;
+Happy Clients : 578<br>
+Working Hours : 4,780<br>
+Awards Won    : 15`);
+          break;
 
-                case 'clean':
-                    resetTerminal();
-                    break;
+        case 'clean': resetTerminal(); break;
+        case 'clear':output.innerHTML = '';
+          addLine('Terminal cleared. Type <span style="color:#fff;">clean</span> to reset.');
+          break;
+        case 'matrix':
+          const bg = document.getElementById('matrix');
+          bg.style.opacity = (bg.style.opacity === '0.3') ? '0.7' : '0.3';
+          addLine('Matrix rain intensity changed.');
+          break;
 
-                case 'clear':
-                    output.innerHTML = '';
-                    addLine('Terminal cleared. Type <span style="color:#fff;">clean</span> to reset to start.');
-                    break;
+        default:
+          if (cmd.startsWith('projects ')) {
+            const num = cmd.split(' ')[1];
+            if (num === '1') addLine('Secure E-Commerce Platform → Full-stack development with advanced security features.');
+            else addLine('Project not found.');
+          } else {
+            addLine(`Command not found: ${cmd}<br>Type <span style="color:#fff;">help</span> for commands.`, 'error');
+          }
+      }
+    }
 
-                case 'matrix':
-                    const bg = document.getElementById('matrix');
-                    bg.style.opacity = (bg.style.opacity === '0.3') ? '0.7' : '0.3';
-                    addLine('Matrix rain intensity changed.');
-                    break;
+    input.addEventListener('keypress', (e) => {
+      if (e.key === 'Enter') {
+        const cmd = input.value.trim();
+        if (cmd) processCommand(cmd);
+        input.value = '';
+      }
+    });
 
-                default:
-                    if (cmd.startsWith('projects ')) {
-                        const num = cmd.split(' ')[1];
-                        if (num === '1') addLine('Secure E-Commerce Platform → Full-stack development with advanced security features.');
-                        else addLine('Project not found. Try 1, 2 or 3.');
-                    } else {
-                        addLine(`Command not found: ${cmd}<br>Type <span style="color:#fff;">help</span> for commands.`, 'error');
-                    }
-            }
-        }
+    window.onload = () => {
+      createMatrix();
+      input.focus();
+    };
 
-        input.addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
-                const cmd = input.value.trim();
-                if (cmd) processCommand(cmd);
-                input.value = '';
-            }
-        });
-
-        window.onload = () => {
-            createMatrix();
-            // Initial welcome already in HTML
-        };
-
-        document.addEventListener('click', () => input.focus());
-    </script>
+    document.addEventListener('click', () => input.focus());
+  </script>
 </body>
 </html>
